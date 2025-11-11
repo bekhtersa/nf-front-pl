@@ -116,7 +116,7 @@ class PlDataset extends PlElement {
 
                 let chunk_start, chunk_end;
                 if (partial) {
-                    if (!merge) {
+                    if (!merge && this.data?.control?.range) {
                         this.data.control.range.chunk_start = 0;
                         this.data.control.range.chunk_end = 99;
                     }
@@ -175,7 +175,7 @@ class PlDataset extends PlElement {
                     if (data[data.length - 1]._rn > chunk_end) {
                         data[data.length - 1] = new PlaceHolder({
                             rn: data[data.length - 1]._rn ?? chunk_end, 
-                            [this.data?.control?.treeMode.hidField]: this.data?.control?.treeMode?.hidValue
+                            [this.data?.control?.treeMode?.hidField]: this.data?.control?.treeMode?.hidValue
                         })
                     }
                 }
